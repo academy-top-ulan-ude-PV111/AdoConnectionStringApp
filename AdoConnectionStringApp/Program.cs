@@ -55,18 +55,25 @@ namespace AdoConnectionStringApp
                 Console.WriteLine($"insert row: {result}");
                 */
 
-                commandText = "SELECT * FROM books";
-                command.CommandText = commandText;
-                SqlDataReader reader = command.ExecuteReader();
+                //commandText = "SELECT * FROM books";
+                //command.CommandText = commandText;
+                //SqlDataReader reader = command.ExecuteReader();
 
-                if(reader.HasRows)
-                {
-                    Console.WriteLine($"{reader.GetName(0)}\t{reader.GetName(1)}\t\t{reader.GetName(2)}\t");
-                    while (reader.Read())
-                    {
-                        Console.WriteLine($"{reader.GetValue(0)}\t{reader.GetValue(1)}\t\t{reader.GetValue(2)}\t");
-                    }
-                }
+                //if(reader.HasRows)
+                //{
+                //    Console.WriteLine($"{reader.GetName(0)}\t{reader.GetName(1)}\t\t{reader.GetName(2)}\t");
+                //    while (reader.Read())
+                //    {
+                //        Console.WriteLine($"{reader.GetInt32(0)}\t{reader.GetString(1)}\t\t{reader.GetString(2)}\t");
+                //    }
+                //}
+
+                commandText = "SELECT SUM(price) FROM books";
+                command.CommandText = commandText;
+
+                var priseAll = command.ExecuteScalar();
+
+                Console.WriteLine(priseAll);
             }
         }
     }
